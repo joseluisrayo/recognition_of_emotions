@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.:: Sistema de Reconocimiento Emocional ::.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .camara {
+            background: black;
+            width: 900px;
+            height: 470px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Sistema de Reconocimiento de Emociones v.1.0.0</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Capturar rostros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Entrenar Modelo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="m-3">
+                    <div class="p-2 bd-highlight text-center">
+                        <h3>Reconocimiento de Emociones v.1.0.0</h3>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="camara p-2">
+                                <img id="camara_reconcer_emotion" src="" alt="" style="width: 100%;">
+                            </div>
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button id="btn-camera" type="button" class="btn btn-outline-secondary m-2">Activar
+                                    Cámara</button>
+                                <button id="btn-camera" type="button" class="btn btn-outline-secondary m-2">Grabar</button>
+                            </div>
+                        </div>
+
+                        <!--
+                        <div>
+                            <div class="camara p-2" style="background: black; width: 900px; height: 470px;">
+                                <img id="camara_reconcer_emotion" src="" alt="" style="width: 100%;">
+                            </div>
+                            <div class="mt-3 d-flex justify-content-center">
+                                <button id="btn-camera" type="button" class="btn btn-outline-secondary m-2">Activar
+                                    Cámara</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#btn-camera").on('click', function () {
+                var v_txt_btn = $(this).text();
+                const trimmedText = v_txt_btn.replace(/\s+/g, "");
+                if (trimmedText === "ActivarCámara") {
+                    $(this).text("Desactivar Cámara");
+                    $("#camara_reconcer_emotion").attr("src", "/video_stream");
+                } else {
+                    $(this).text("ActivarCámara");
+                    $("#camara_reconcer_emotion").attr("src", "");
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
